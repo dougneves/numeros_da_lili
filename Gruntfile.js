@@ -9,9 +9,18 @@ module.exports = function(grunt) {
     },
     copy: {
       main: {
-        flatten: true,
-        src: 'node_modules/jquery/dist/core.js',
-        dest: 'src/core.js'
+        files: [
+          {
+            flatten: true,
+            src: 'node_modules/jquery/dist/core.js',
+            dest: 'src/core.js'
+          },
+          {
+            flatten: true,
+            src: 'node_modules/mini.css/dist/mini.lite.min.css',
+            dest: 'src/mini.lite.min.js'
+          }
+        ]
       }
     }
   })

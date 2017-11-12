@@ -12,7 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.2",
-    "jquery": "^3.2.1"
+    "jquery": "^3.2.1",
+    "mini.css": "^2.3.7"
   },
   "devDependencies": {
     "grunt": "^1.0.1",
