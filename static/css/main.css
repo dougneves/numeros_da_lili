@@ -1,0 +1,39 @@
+html,body
+{
+  height:100%;
+  margin:0;
+}
+.tela-entrada
+{
+  height:100%;
+  width:100%;
+  margin-left:auto;
+  margin-right:auto;
+  text-align: center;
+  background: url("../images/back0.jpg") no-repeat center;
+  background-size: auto 100%;
+}
+
+#tela-logo
+{
+  padding-top: 2rem;
+  display:none;
+}
+
+.tela-entrada .tela-logo .texto
+{
+  min-width:30%;
+  min-height:auto;
+}
+
+#menu-jogo
+{
+  margin-top:10rem;
+  display:none;
+}
+
+.not-active
+{
+   pointer-events: none;
+   cursor: default;
+}
