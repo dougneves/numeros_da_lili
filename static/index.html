@@ -7,8 +7,8 @@
 	</head>
 
 	<body>
-    <div class="tela-entrada">
-      <div id="tela-logo">
+    <div id="tela-entrada">
+      <div id="tela-logo" class="hidden">
         <p>
           <img class="texto" src="images/texto_numeros_da.png">
         </p>
@@ -26,6 +26,10 @@
     <audio id="intro-sound">
       <source src="sound/intro.ogg" type="audio/ogg">
       <source src="sound/intro.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="click-sound">
+      <source src="sound/click.ogg" type="audio/ogg">
+      <source src="sound/click.mp3" type="audio/mpeg">
     </audio>
 
   <script src="js/jquery.min.js"></script>
@@ -61,6 +65,7 @@
     }
     function VamosJogar()
     {
+      $('#click-sound')[0].play(); 
       tts.calar();
       tts.falar('legal, vamos jogar',()=>{location.href='jogo.html'});
     }
