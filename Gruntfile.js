@@ -4,14 +4,14 @@ module.exports = function(grunt) {
     uglify: {
       build: {
         src: 'src/*.js',
-        dest: 'static/*.min.js'
+        dest: 'static/bundle.min.js'
       }
     },
     copy: {
       main: {
-        expand: false,
+        flatten: true,
         src: 'node_modules/jquery/dist/core.js',
-        dest: 'src/'
+        dest: 'src/core.js'
       }
     }
   })
