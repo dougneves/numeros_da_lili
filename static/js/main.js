@@ -13,6 +13,6 @@ class TTS {
     speechSynthesis.speak(this.ttsObj)
   }
   calar() {
-    this.ttsObj.cancel()
+    speechSynthesis.cancel()
   }
 }
