@@ -12,4 +12,7 @@ class TTS {
     this.ttsObj.onend = callback
     speechSynthesis.speak(this.ttsObj)
   }
+  calar() {
+    this.ttsObj.cancel()
+  }
 }
