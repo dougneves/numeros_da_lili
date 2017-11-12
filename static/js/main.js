@@ -1,5 +1,5 @@
 class TTS {
-  construtor() {
+  constructor() {
     this.ttsObj = new SpeechSynthesisUtterance()
     this.ttsObj.voiceURI = 'native'
     this.ttsObj.volume = 1
