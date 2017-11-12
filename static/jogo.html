@@ -5,10 +5,28 @@
 		<title>Numeros da Lili</title>
 	</head>
 	<body>
-		<div id="pergunta"></div>
-		<div id="resposta"></div>
+		<div id="tela-pergunta">
+      <img src="images/speaker.png">
+    </div>
+		<div id="resposta0"></div>
+		<div id="resposta1"></div>
+		<div id="resposta2"></div>
+		<div id="resposta3"></div>
+		<div id="resposta4"></div>
+		<div id="resposta5"></div>
+		<div id="resposta6"></div>
+		<div id="resposta7"></div>
+		<div id="resposta8"></div>
 		<script src="js/jquery.min.js"></script>
 		<script src="js/main.js"></script>
 		<script src="js/jogo.js"></script>
+
+    <script>
+    $('#tela-pergunta img').on('click',FalaNumeroPrincipal);
+
+    jogo.level=1;
+    ProximaRodada();
+    </script>
+    
 	</body>
 </html>

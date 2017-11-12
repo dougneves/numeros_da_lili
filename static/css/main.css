@@ -37,3 +37,8 @@ html,body
    pointer-events: none;
    cursor: default;
 }
+
+#tela-pergunta
+{
+  padding-top: 2rem;
+}
