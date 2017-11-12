@@ -40,8 +40,8 @@
     </audio>
 
     <script>
-    $('#tela-pergunta img').on('click',FalaNumeroPrincipal);
-    $('#tela-pergunta .resposta').on('click',TestaNumero);
+    $('#tela-pergunta img').on('click dragstart',FalaNumeroPrincipal);
+    $('#tela-pergunta .resposta').on('click dragstart',TestaNumero);
 
     InicioDeJogo();
     jogo.level=1;

@@ -12,25 +12,29 @@ const jogo=
   passou: false,
   correto_ix: 0,     //posição do número correto da rodada
   numeros: [0],      //array de números resposta do tamanho de posicoes
-  gerador: false,    //função de geração de números
+  geradores: [],  //funções de geração de números
 }
+
+jogo.geradores.push(GeradorMetodoA);
+jogo.geradores.push(GeradorMetodoA); //mais chances
+jogo.geradores.push(GeradorMetodoB);
 
 const frases_certas=
 [
-'OK 1',
-'OK 2',
-'OK 3',
-'OK 4',
-'OK 5',
+'Parabéns',
+'Muito bem',
+'Correto',
+'Isso aí',
+'Certo',
 ]
 
 const frases_erradas=
 [
-'ERRO 1',
-'ERRO 2',
-'ERRO 3',
-'ERRO 4',
-'ERRO 5',
+'Não é não',
+'Tente de novo',
+'Acho que não',
+'Xi, errou',
+'Mais uma vez',
 ]
 
 function GeraNumero(min,max)
@@ -53,7 +57,6 @@ function ClickSound()
 
 function InicioDeJogo()
 {
-  jogo.gerador=GeradorMetodoA;
   tts.falar('Depois de ouvir o número selecione ele na tela.',ProximaRodada);
 }
 
@@ -67,7 +70,7 @@ function ProximaRodada()
   }
 
   Unlock();
-  jogo.gerador();
+  jogo.geradores[GeraNumero(0,jogo.geradores.length)]();
 
   for(i=0;i<jogo.posicoes;i++)
     DesenhaNumero(jogo.numeros[i],'#resposta'+i);
@@ -75,23 +78,42 @@ function ProximaRodada()
   FalaNumeroPrincipal();
 }
 
+//chuta um número e aloca em posição aleatória. os outros números errados ficam em sequência
 function GeradorMetodoA()
 {
   var numero,i;
 
+  numero = GeraNumero((jogo.level-1)*jogo.multiplicador,jogo.level*jogo.multiplicador);
   //evita repetir
-  do
-    numero = GeraNumero((jogo.level-1)*jogo.multiplicador+jogo.posicoes,jogo.level*jogo.multiplicador);
-  while(numero==jogo.numeros[jogo.correto_ix]);
+  if(numero==jogo.numeros[jogo.correto_ix]) numero++;
 
   jogo.correto_ix = GeraNumero(0,jogo.posicoes);
-  jogo.numeros[jogo.correto_ix] = numero;
- 
-  for(i=0;i<jogo.posicoes;i++)
+  if(GeraNumero(0,2)==0)
   {
-    if(i!=jogo.correto_ix)
-      jogo.numeros[i]=jogo.numeros[jogo.correto_ix]+i-jogo.correto_ix;
+    for(i=0;i<jogo.posicoes;i++)
+      jogo.numeros[i]=numero+i;
   }
+  else
+  {
+    for(i=jogo.posicoes-1;i>=0;i--)
+      jogo.numeros[i]=numero-i;
+  }
+}
+
+//igual o A só que o número sempre termina igual
+function GeradorMetodoB()
+{
+  numero = GeraNumero((jogo.level-1)*jogo.multiplicador,jogo.level*jogo.multiplicador);
+  //evita repetir
+  if(numero==jogo.numeros[jogo.correto_ix]) numero++;
+
+  jogo.correto_ix = GeraNumero(0,jogo.posicoes);
+
+  for(i=0;i<jogo.posicoes;i++)
+    jogo.numeros[i]=numero+i;
+
+  for(i=0;i<jogo.posicoes;i++)
+    jogo.numeros[i]=parseInt((''+jogo.numeros[i]).split('').reverse().join(''));
 }
 
 function Lock()
@@ -108,6 +130,7 @@ function Unlock()
 
 function TestaNumero(e)
 {
+  e.preventDefault();
   if(jogo.disabled) return;
 
   if(e.target.tagName!='DIV') e.target=e.target.parentElement;
@@ -142,11 +165,12 @@ function DesenhaPontuacao()
   $('#nivel').html(jogo.level);
 }
 
-function FalaNumeroPrincipal()
+function FalaNumeroPrincipal(e)
 {
+  if(e) e.preventDefault();
   if(jogo.disabled) return;
 
   Lock();
-  ClickSound();
+  //ClickSound();
   tts.falar(jogo.numeros[jogo.correto_ix],Unlock);
 }
