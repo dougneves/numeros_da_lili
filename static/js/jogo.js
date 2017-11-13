@@ -66,6 +66,9 @@ function ProximaRodada()
   {
     jogo.passou=false;
     tts.falar('Parabéns, agora vamos para o nível '+jogo.level,ProximaRodada);
+    jogo.level++;
+
+    DesenhaPontuacao();
     return;
   }
 
@@ -144,10 +147,7 @@ function TestaNumero(e)
     tts.falar(frases_certas[GeraNumero(0,frases_certas.length)],ProximaRodada);
     
     if(++jogo.acertos%jogo.passar_nivel==0)
-    {
-      jogo.passou++;
-      jogo.level++;
-    }
+      jogo.passou=true;
   }
   else
   {
