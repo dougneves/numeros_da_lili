@@ -65,8 +65,8 @@ function ProximaRodada()
   if(jogo.passou)
   {
     jogo.passou=false;
-    tts.falar('Parabéns, agora vamos para o nível '+jogo.level,ProximaRodada);
     jogo.level++;
+    tts.falar('Parabéns, agora vamos para o nível '+jogo.level,ProximaRodada);
 
     DesenhaPontuacao();
     return;
