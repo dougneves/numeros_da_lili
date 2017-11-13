@@ -35,7 +35,11 @@
   <script src="js/jquery.min.js"></script>
   <script src="js/main.js"></script>
   <script>
-    $('#intro-sound').on('ended',FimDaMusica)[0].play();
+    //site mobile não pode tocar som automaticamente 
+    if(!window.cordova && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
+      FimDaMusica();
+    else
+      $('#intro-sound').on('ended',FimDaMusica)[0].play();
     $('#menu-item-jogar').on('click',VamosJogar);
     var tts=new TTS,contagem=0;
     function FimDaMusica()
