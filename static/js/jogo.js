@@ -95,6 +95,7 @@ function GeradorMetodoA()
   }
   else
   {
+    if(numero<jogo.posicoes) numero+=jogo.posicoes;
     for(i=jogo.posicoes-1;i>=0;i--)
       jogo.numeros[i]=numero-i;
   }
