@@ -87,8 +87,6 @@ function GeradorMetodoA()
   var numero,i;
 
   numero = GeraNumero((jogo.level-1)*jogo.multiplicador,jogo.level*jogo.multiplicador);
-  //evita repetir
-  if(numero==jogo.numeros[jogo.correto_ix]) numero++;
 
   jogo.correto_ix = GeraNumero(0,jogo.posicoes);
   if(GeraNumero(0,2)==0)
@@ -108,8 +106,6 @@ function GeradorMetodoA()
 function GeradorMetodoB()
 {
   numero = GeraNumero((jogo.level-1)*jogo.multiplicador,jogo.level*jogo.multiplicador);
-  //evita repetir
-  if(numero==jogo.numeros[jogo.correto_ix]) numero++;
 
   jogo.correto_ix = GeraNumero(0,jogo.posicoes);
 
