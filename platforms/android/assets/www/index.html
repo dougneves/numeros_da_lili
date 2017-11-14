@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Números da Lili</title>
+    <link rel="stylesheet" href="css/main.css">
+		<script type="text/javascript" charset="utf-8" src="cordova.js"></script>  
+	</head>
+
+	<body>
+    <div class="tela-entrada">
+      <div id="tela-logo">
+        <p>
+          <img class="texto" src="images/texto_numeros_da.png">
+        </p>
+        <p>
+          <img class="texto" src="images/texto_lili.png">
+        </p>
+      </div>
+      <div id="menu-jogo">
+        <a id="menu-item-jogar">
+          <img class="menu-item" src="images/texto_jogar.png">
+        </a>
+      </div>
+    </div>
+
+    <audio id="intro-sound">
+      <source src="sound/intro.ogg" type="audio/ogg">
+      <source src="sound/intro.mp3" type="audio/mpeg">
+    </audio>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+  $('#intro-sound')
+  .on('ended', FimDaMusica)[0]
+  .play()
+$('#menu-item-jogar').on('click', VamosJogar)
+var tts = new TTS(),
+  contagem = 0
+function FimDaMusica() {
+  $('#tela-logo').fadeIn()
+  tts.falar('os números da lili', FimDoTexto)
+}
+
+function FimDoTexto() {
+  $('#menu-jogo').fadeIn()
+  setInterval(FalarComecar, 10000)
+  FalarComecar()
+}
+
+function FalarComecar() {
+  contagem++
+  if (contagem < 3) tts.falar('aperte jogar para começar', null)
+  else if (contagem == 8) {
+    tts.falar('xiii, parece que ninguém quer jogar', null)
+    contagem = 0
+  } else if (contagem >= 6) tts.falar('lili, você está aí?', null)
+}
+function VamosJogar() {
+  tts.calar()
+  tts.falar('legal, vamos jogar', () => {
+    location.href = 'jogo.html'
+  })
+}
+</script>
+	</body>
+</html>
