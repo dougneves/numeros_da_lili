@@ -2,13 +2,47 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Numeros da Lili</title>
+		<title>Números da Lili</title>
+    <link rel="stylesheet" href="css/main.css">
 	</head>
 	<body>
-		<div id="pergunta"></div>
-		<div id="resposta"></div>
+		<div id="tela-pergunta">
+      <div id="tela-logo">
+        <p>
+          <img src="images/texto_lili.png">
+        </p>
+        <img src="images/speaker.png">
+      </div>
+      <div id="tela-respostas">
+        <div class="resposta" id="resposta0"></div>
+        <div class="resposta" id="resposta1"></div>
+        <div class="resposta" id="resposta2"></div>
+        <div class="resposta" id="resposta3"></div>
+        <div class="resposta" id="resposta4"></div>
+        <div class="resposta" id="resposta5"></div>
+        <div class="resposta" id="resposta6"></div>
+        <div class="resposta" id="resposta7"></div>
+        <div class="resposta" id="resposta8"></div>
+      </div>
+      <div id="tela-rodape" class="hidden">
+        <div>Pontuação: <span id="pontuacao"></span></div>
+        <div>Nível: <span id="nivel"></span></div>
+      </div>
+    </div>
+    <div id="mascara"></div>
+		<script src="cordova.js"></script>
 		<script src="js/jquery.min.js"></script>
-		<script src="js/main.js"></script>
+		<script src="js/tts.js"></script>
 		<script src="js/jogo.js"></script>
+
+    <audio id="click-sound">
+      <source src="sound/click.ogg" type="audio/ogg">
+      <source src="sound/click.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+
+	</script>
+
 	</body>
 </html>
