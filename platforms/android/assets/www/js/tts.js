@@ -1,7 +1,7 @@
 class TTSWrapper {
   constructor() {
     try {
-      if (SpeechSynthesisUtterance) {
+      if (typeof SpeechSynthesisUtterance !== 'undefined') {
         this.ttsObj = new SpeechSynthesisUtterance()
         this.ttsObj.voiceURI = 'native'
         this.ttsObj.volume = 1
@@ -15,7 +15,7 @@ class TTSWrapper {
   }
   falar(frase, callback) {
     try {
-      if (TTS) {
+      if (typeof TTS !== 'undefined') {
         TTS.speak(
           {
             text: frase,
@@ -32,7 +32,7 @@ class TTSWrapper {
       console.error(err)
     }
     try {
-      if (SpeechSynthesisUtterance) {
+      if (typeof SpeechSynthesisUtterance !== 'undefined') {
         this.ttsObj.text = frase
         this.ttsObj.onend = callback
         speechSynthesis.speak(this.ttsObj)
@@ -42,6 +42,12 @@ class TTSWrapper {
     }
   }
   calar() {
-    speechSynthesis.cancel()
+    try {
+      if (typeof SpeechSynthesisUtterance !== 'undefined') {
+        speechSynthesis.cancel()
+      }
+    } catch (err) {
+      console.error(err)
+    }
   }
 }

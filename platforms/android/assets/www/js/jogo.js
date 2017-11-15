@@ -158,8 +158,14 @@ function FalaNumeroPrincipal(e) {
 $(document).ready(() => {
   $('#tela-pergunta img').on('click dragstart', FalaNumeroPrincipal)
   $('#tela-pergunta .resposta').on('click dragstart', TestaNumero)
-
-  InicioDeJogo()
   jogo.level = 1
-  DesenhaPontuacao()
+
+  document.addEventListener(
+    'deviceready',
+    () => {
+      InicioDeJogo()
+      DesenhaPontuacao()
+    },
+    false
+  )
 }, false)
